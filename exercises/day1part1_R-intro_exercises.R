@@ -266,3 +266,4 @@ plot(gapminder07$lifeExp~gapminder07$gdpPercap,main="scatterplot of lifeExp over
 # Bonus: Add a horizontal line indicating the mean of `lifeExp` onto the plot using `abline()`.
 abline(h=mean(gapminder07$lifeExp))
 
+#temp change
