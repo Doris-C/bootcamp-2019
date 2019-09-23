@@ -1,0 +1,40 @@
+---
+title: "FinalRExercise_CaoDoris.Rmd"
+author: "Doris Cao"
+date: "9/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(here)
+library(dplyr)
+```
+
+Import Data
+```{r}
+nys_schools=read.csv(here::here("data","nys_schools.csv"))
+nys_acs=read.csv(here::here("data","nys_acs.csv"))
+```
+
+Explore Your Data
+```{r}
+str(nys_acs)
+str(nys_schools)
+any(nys_acs==-99)
+any(nys_schools==-99)
+sum(nys_schools==-99)
+```
+
+Recoding and variable manipulation
+```{r}
+# Remove observations with missing value in it
+nys_schools_nomissing=nys_schools%>%
+    filter(all(select(., total_enroll:mean_math_score))>0)
+
+thresholds1=min(nys_acs$county_per_poverty)
+```
+
